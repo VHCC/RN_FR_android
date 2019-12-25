@@ -6,6 +6,7 @@ import android.content.ContextWrapper;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.hardware.Camera;
+import android.os.Environment;
 import android.util.AttributeSet;
 import android.util.Base64;
 import android.util.Log;
@@ -36,6 +37,9 @@ import org.opencv.tracking.TrackerMedianFlow;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -74,6 +78,10 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
     private RecognitionMethods.onRecognized recognitionCallback;
     private RecognitionMethods.onFaceCaptured faceCapturedCallback;
     private int maxConfidence;
+
+    private int mAbsoluteFaceSize = 0;
+
+    private int FACE_THRESHOLD = 50;
 
     public FaceCameraManage(Context context, int cameraId) {
         super(context, cameraId);
@@ -114,50 +122,96 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
 
                 rgba = inputFrame.rgba();
 
+                gray = inputFrame.gray();
+
+                float mRelativeFaceSize = 0.1f;
+                if (mAbsoluteFaceSize == 0) {
+                    int height = gray.rows();
+                    if (Math.round(height * mRelativeFaceSize) > 0) {
+                        mAbsoluteFaceSize = Math.round(height * mRelativeFaceSize);
+                    }
+                }
+
                 applyOrientation(rgba, clockwise, rotation);
 
                 Imgproc.cvtColor(rgba, gray, Imgproc.COLOR_RGB2GRAY);
 
                 if (classifier != null) {
-                    if (tracker != null && tracker.update(gray, trackerPoints)) {
-                        OPENCV_RECOG++;
-                        Log.e("WPC", "OPENCV_RECOG= " + OPENCV_RECOG);
 
-                        Rect2d[] facePoints = trackerPoints.toArray();
-                        for (int i = 0; i < facePoints.length; i++) {
-                            Imgproc.rectangle(rgba, facePoints[i].tl(), facePoints[i].br(), new Scalar(255, 255, 255), 1);
-                            Log.e("WPC", "facePoints[i].width= " + facePoints[i].width + ", facePoints[i].height= " + facePoints[i].height);
-                            Log.e("WPC", "facePoints[i].y= " + facePoints[i].y + ", facePoints[i].x= " + facePoints[i].x);
-                            Log.e("WPC", "rgba.cols()= " + rgba.cols() + ", rgba.rows()= " + rgba.rows());
-                            if (facePoints[i].y > 0 &&
-                                    facePoints[i].x > 0 &&
-                                    facePoints[i].width > 60 &&
-                                    facePoints[i].height > 60 &&
-                                    (facePoints[i].x + (int)facePoints[i].width)< rgba.cols() &&
-                                    (facePoints[i].y + (int)facePoints[i].height)< rgba.rows()) {
-                                final Bitmap bitmap = Bitmap.createBitmap(rgba.cols(), rgba.rows(), Bitmap.Config.RGB_565);
-                                Utils.matToBitmap(rgba, bitmap);
-                                Bitmap faceImageBitmap = Bitmap.createBitmap(bitmap,
-                                        (int)facePoints[i].x,
-                                        (int)facePoints[i].y,
-                                        (int)facePoints[i].width,
-                                        (int)facePoints[i].height);
+                    classifier.detectMultiScale(gray, faces, 1.1, 3, 2,
+                            new Size(mAbsoluteFaceSize, mAbsoluteFaceSize), new Size());
+                    Rect[] facesArray = faces.toArray();
+                    Scalar faceRectColor = new Scalar(255, 255, 255);
 
-                                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                                faceImageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-                                byte[] byteArray = byteArrayOutputStream .toByteArray();
+                    for (Rect faceRect : facesArray) {
+                        // tl : top-left
+                        // br : bottom-right
+                        if (faceRect.width > FACE_THRESHOLD && faceRect.height > FACE_THRESHOLD) {
+                            OPENCV_RECOG++;
+                            Log.e("WPC", "OPENCV_RECOG= " + OPENCV_RECOG);
+                            Log.e(TAG, " * width= " + faceRect.width + ", height= " + faceRect.height);
+//                        circleOverlay.setVisibility(View.GONE);
 
-                                String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
-                                if (OPENCV_RECOG > 20) {
-                                    faceCapturedCallback.onFaceBack(encoded);
-                                    OPENCV_RECOG = 0;
-                                }
+                            final Bitmap bitmap =
+                                    Bitmap.createBitmap(rgba.cols(), rgba.rows(), Bitmap.Config.RGB_565);
+                            Utils.matToBitmap(rgba, bitmap);
+                            Bitmap faceImageBitmap = Bitmap.createBitmap(bitmap, faceRect.x, faceRect.y, faceRect.width, faceRect.height);
+
+
+                            Imgproc.rectangle(rgba, faceRect.tl(), faceRect.br(), faceRectColor, 1);
+
+                            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                            faceImageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                            byte[] byteArray = byteArrayOutputStream.toByteArray();
+
+                            String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
+                            if (OPENCV_RECOG > 10) {
+                                writeToFile(encoded);
+                                faceCapturedCallback.onFaceBack(encoded);
+                                OPENCV_RECOG = 0;
                             }
-
                         }
-                    } else {
-                        myTimer.scheduleAtFixedRate(new trackFace(), 1000, 5 * 1000);
                     }
+
+//                    if (tracker != null && tracker.update(gray, trackerPoints)) {
+//                        OPENCV_RECOG++;
+//                        Log.e("WPC", "OPENCV_RECOG= " + OPENCV_RECOG);
+//
+//                        Rect2d[] facePoints = trackerPoints.toArray();
+//                        for (int i = 0; i < facePoints.length; i++) {
+//                            Imgproc.rectangle(rgba, facePoints[i].tl(), facePoints[i].br(), new Scalar(255, 255, 255), 1);
+//                            Log.e("WPC", "facePoints[i].width= " + facePoints[i].width + ", facePoints[i].height= " + facePoints[i].height);
+//                            Log.e("WPC", "facePoints[i].y= " + facePoints[i].y + ", facePoints[i].x= " + facePoints[i].x);
+//                            Log.e("WPC", "rgba.cols()= " + rgba.cols() + ", rgba.rows()= " + rgba.rows());
+//                            if (facePoints[i].y > 0 &&
+//                                    facePoints[i].x > 0 &&
+//                                    facePoints[i].width > 60 &&
+//                                    facePoints[i].height > 60 &&
+//                                    (facePoints[i].x + (int)facePoints[i].width)< rgba.cols() &&
+//                                    (facePoints[i].y + (int)facePoints[i].height)< rgba.rows()) {
+//                                final Bitmap bitmap = Bitmap.createBitmap(rgba.cols(), rgba.rows(), Bitmap.Config.RGB_565);
+//                                Utils.matToBitmap(rgba, bitmap);
+//                                Bitmap faceImageBitmap = Bitmap.createBitmap(bitmap,
+//                                        (int)facePoints[i].x,
+//                                        (int)facePoints[i].y,
+//                                        (int)facePoints[i].width,
+//                                        (int)facePoints[i].height);
+//
+//                                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+//                                faceImageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+//                                byte[] byteArray = byteArrayOutputStream .toByteArray();
+//
+//                                String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
+//                                if (OPENCV_RECOG > 20) {
+//                                    writeToFile(encoded);
+//                                    faceCapturedCallback.onFaceBack(encoded);
+//                                    OPENCV_RECOG = 0;
+//                                }
+//                            }
+//                        }
+//                    } else {
+//                        myTimer.scheduleAtFixedRate(new trackFace(), 1000, 5 * 1000);
+//                    }
                 }
 
                 return rgba;
@@ -555,5 +609,36 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
                 callback.onFail(err);
             }
         });
+    }
+
+    public void writeToFile(String data) {
+        // Get the directory for the user's public pictures directory.
+        final File path = Environment.getExternalStoragePublicDirectory(
+        //Environment.DIRECTORY_PICTURES
+                Environment.DIRECTORY_DOWNLOADS);
+
+        // Make sure the path directory exists.
+        if (!path.exists()) {
+        // Make it, if it doesn't exit
+            path.mkdirs();
+        }
+
+        final File file = new File(path, "log_upload.txt");
+
+        // Save your stream, don't forget to flush() it before closing it.
+
+        try {
+            file.createNewFile();
+            FileOutputStream fOut = new FileOutputStream(file);
+            OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
+            myOutWriter.append(data);
+
+            myOutWriter.close();
+
+            fOut.flush();
+            fOut.close();
+        } catch (IOException e) {
+            Log.e("Exception", "File write failed: " + e.toString());
+        }
     }
 }
