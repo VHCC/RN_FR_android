@@ -128,10 +128,13 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
                             Imgproc.rectangle(rgba, facePoints[i].tl(), facePoints[i].br(), new Scalar(255, 255, 255), 1);
                             Log.e("WPC", "facePoints[i].width= " + facePoints[i].width + ", facePoints[i].height= " + facePoints[i].height);
                             Log.e("WPC", "facePoints[i].y= " + facePoints[i].y + ", facePoints[i].x= " + facePoints[i].x);
+                            Log.e("WPC", "rgba.cols()= " + rgba.cols() + ", rgba.rows()= " + rgba.rows());
                             if (facePoints[i].y > 0 &&
                                     facePoints[i].x > 0 &&
                                     facePoints[i].width > 60 &&
-                                    facePoints[i].height > 60) {
+                                    facePoints[i].height > 60 &&
+                                    (facePoints[i].x + (int)facePoints[i].width)< rgba.cols() &&
+                                    (facePoints[i].y + (int)facePoints[i].height)< rgba.rows()) {
                                 final Bitmap bitmap = Bitmap.createBitmap(rgba.cols(), rgba.rows(), Bitmap.Config.RGB_565);
                                 Utils.matToBitmap(rgba, bitmap);
                                 Bitmap faceImageBitmap = Bitmap.createBitmap(bitmap,
