@@ -1,0 +1,42 @@
+{
+  "_from": "react-native-facerecognition@^2.0.0",
+  "_id": "react-native-facerecognition@2.0.0",
+  "_inBundle": false,
+  "_integrity": "sha512-SYQM3thaxPfKJOzpt207OSb9aQU3B+R5LuscqEy3eBhDrrwvey7IwJXao8f2US/B0Dz56w2nAZgZirMPJsUfyw==",
+  "_location": "/react-native-facerecognition",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "react-native-facerecognition@^2.0.0",
+    "name": "react-native-facerecognition",
+    "escapedName": "react-native-facerecognition",
+    "rawSpec": "^2.0.0",
+    "saveSpec": null,
+    "fetchSpec": "^2.0.0"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-facerecognition/-/react-native-facerecognition-2.0.0.tgz",
+  "_shasum": "0ad147063940800868982ee5266d1da86e56970a",
+  "_spec": "react-native-facerecognition@^2.0.0",
+  "_where": "/Users/MAC/Desktop/FR/example",
+  "author": {
+    "name": "Assem Abozaid",
+    "email": "assemabozaidfcih@gmail.com"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "A face detection and recognition library for React Native. High quality and even Faster!",
+  "license": "MIT",
+  "main": "src/index.js",
+  "name": "react-native-facerecognition",
+  "peerDependencies": {
+    "react-native": "^0.41.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "2.0.0"
+}
