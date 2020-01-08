@@ -1,3 +1,4 @@
+
 //
 // This file is auto-generated. Please don't modify it!
 //
@@ -18,12 +19,7 @@ import org.opencv.core.RotatedRect;
 import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.core.TermCriteria;
-import org.opencv.imgproc.CLAHE;
-import org.opencv.imgproc.LineSegmentDetector;
 import org.opencv.utils.Converters;
-
-// C++: class Imgproc
-//javadoc: Imgproc
 
 public class Imgproc {
 
@@ -134,12 +130,9 @@ public class Imgproc {
             INTER_CUBIC = 2,
             INTER_AREA = 3,
             INTER_LANCZOS4 = 4,
-            INTER_LINEAR_EXACT = 5,
             INTER_MAX = 7,
             WARP_FILL_OUTLIERS = 8,
             WARP_INVERSE_MAP = 16,
-            WARP_POLAR_LINEAR = 0,
-            WARP_POLAR_LOG = 256,
             INTER_BITS = 5,
             INTER_BITS2 = INTER_BITS * 2,
             INTER_TAB_SIZE = 1 << INTER_BITS,
@@ -174,7 +167,6 @@ public class Imgproc {
             GC_INIT_WITH_RECT = 0,
             GC_INIT_WITH_MASK = 1,
             GC_EVAL = 2,
-            GC_EVAL_FREEZE_MODEL = 3,
             DIST_LABEL_CCOMP = 0,
             DIST_LABEL_PIXEL = 1,
             FLOODFILL_FIXED_RANGE = 1 << 16,
@@ -640,7 +632,7 @@ public class Imgproc {
     public static CLAHE createCLAHE(double clipLimit, Size tileGridSize)
     {
         
-        CLAHE retVal = CLAHE.__fromPtr__(createCLAHE_0(clipLimit, tileGridSize.width, tileGridSize.height));
+        CLAHE retVal = new CLAHE(createCLAHE_0(clipLimit, tileGridSize.width, tileGridSize.height));
         
         return retVal;
     }
@@ -649,7 +641,7 @@ public class Imgproc {
     public static CLAHE createCLAHE()
     {
         
-        CLAHE retVal = CLAHE.__fromPtr__(createCLAHE_1());
+        CLAHE retVal = new CLAHE(createCLAHE_1());
         
         return retVal;
     }
@@ -663,7 +655,7 @@ public class Imgproc {
     public static LineSegmentDetector createLineSegmentDetector(int _refine, double _scale, double _sigma_scale, double _quant, double _ang_th, double _log_eps, double _density_th, int _n_bins)
     {
         
-        LineSegmentDetector retVal = LineSegmentDetector.__fromPtr__(createLineSegmentDetector_0(_refine, _scale, _sigma_scale, _quant, _ang_th, _log_eps, _density_th, _n_bins));
+        LineSegmentDetector retVal = new LineSegmentDetector(createLineSegmentDetector_0(_refine, _scale, _sigma_scale, _quant, _ang_th, _log_eps, _density_th, _n_bins));
         
         return retVal;
     }
@@ -672,7 +664,7 @@ public class Imgproc {
     public static LineSegmentDetector createLineSegmentDetector()
     {
         
-        LineSegmentDetector retVal = LineSegmentDetector.__fromPtr__(createLineSegmentDetector_1());
+        LineSegmentDetector retVal = new LineSegmentDetector(createLineSegmentDetector_1());
         
         return retVal;
     }
@@ -701,34 +693,6 @@ public class Imgproc {
     {
         Mat points_mat = points;
         RotatedRect retVal = new RotatedRect(fitEllipse_0(points_mat.nativeObj));
-        
-        return retVal;
-    }
-
-
-    //
-    // C++:  RotatedRect fitEllipseAMS(Mat points)
-    //
-
-    //javadoc: fitEllipseAMS(points)
-    public static RotatedRect fitEllipseAMS(Mat points)
-    {
-        
-        RotatedRect retVal = new RotatedRect(fitEllipseAMS_0(points.nativeObj));
-        
-        return retVal;
-    }
-
-
-    //
-    // C++:  RotatedRect fitEllipseDirect(Mat points)
-    //
-
-    //javadoc: fitEllipseDirect(points)
-    public static RotatedRect fitEllipseDirect(Mat points)
-    {
-        
-        RotatedRect retVal = new RotatedRect(fitEllipseDirect_0(points.nativeObj));
         
         return retVal;
     }
@@ -824,29 +788,6 @@ public class Imgproc {
     {
         
         double retVal = contourArea_1(contour.nativeObj);
-        
-        return retVal;
-    }
-
-
-    //
-    // C++:  double getFontScaleFromHeight(int fontFace, int pixelHeight, int thickness = 1)
-    //
-
-    //javadoc: getFontScaleFromHeight(fontFace, pixelHeight, thickness)
-    public static double getFontScaleFromHeight(int fontFace, int pixelHeight, int thickness)
-    {
-        
-        double retVal = getFontScaleFromHeight_0(fontFace, pixelHeight, thickness);
-        
-        return retVal;
-    }
-
-    //javadoc: getFontScaleFromHeight(fontFace, pixelHeight)
-    public static double getFontScaleFromHeight(int fontFace, int pixelHeight)
-    {
-        
-        double retVal = getFontScaleFromHeight_1(fontFace, pixelHeight);
         
         return retVal;
     }
@@ -1230,20 +1171,6 @@ public class Imgproc {
     {
         
         HoughLinesP_1(image.nativeObj, lines.nativeObj, rho, theta, threshold);
-        
-        return;
-    }
-
-
-    //
-    // C++:  void HoughLinesPointSet(Mat _point, Mat& _lines, int lines_max, int threshold, double min_rho, double max_rho, double rho_step, double min_theta, double max_theta, double theta_step)
-    //
-
-    //javadoc: HoughLinesPointSet(_point, _lines, lines_max, threshold, min_rho, max_rho, rho_step, min_theta, max_theta, theta_step)
-    public static void HoughLinesPointSet(Mat _point, Mat _lines, int lines_max, int threshold, double min_rho, double max_rho, double rho_step, double min_theta, double max_theta, double theta_step)
-    {
-        
-        HoughLinesPointSet_0(_point.nativeObj, _lines.nativeObj, lines_max, threshold, min_rho, max_rho, rho_step, min_theta, max_theta, theta_step);
         
         return;
     }
@@ -1903,20 +1830,6 @@ public class Imgproc {
 
 
     //
-    // C++:  void cvtColorTwoPlane(Mat src1, Mat src2, Mat& dst, int code)
-    //
-
-    //javadoc: cvtColorTwoPlane(src1, src2, dst, code)
-    public static void cvtColorTwoPlane(Mat src1, Mat src2, Mat dst, int code)
-    {
-        
-        cvtColorTwoPlane_0(src1.nativeObj, src2.nativeObj, dst.nativeObj, code);
-        
-        return;
-    }
-
-
-    //
     // C++:  void demosaicing(Mat _src, Mat& _dst, int code, int dcn = 0)
     //
 
@@ -2365,29 +2278,6 @@ public class Imgproc {
 
 
     //
-    // C++:  void goodFeaturesToTrack(Mat image, vector_Point& corners, int maxCorners, double qualityLevel, double minDistance, Mat mask, int blockSize, int gradientSize, bool useHarrisDetector = false, double k = 0.04)
-    //
-
-    //javadoc: goodFeaturesToTrack(image, corners, maxCorners, qualityLevel, minDistance, mask, blockSize, gradientSize, useHarrisDetector, k)
-    public static void goodFeaturesToTrack(Mat image, MatOfPoint corners, int maxCorners, double qualityLevel, double minDistance, Mat mask, int blockSize, int gradientSize, boolean useHarrisDetector, double k)
-    {
-        Mat corners_mat = corners;
-        goodFeaturesToTrack_0(image.nativeObj, corners_mat.nativeObj, maxCorners, qualityLevel, minDistance, mask.nativeObj, blockSize, gradientSize, useHarrisDetector, k);
-        
-        return;
-    }
-
-    //javadoc: goodFeaturesToTrack(image, corners, maxCorners, qualityLevel, minDistance, mask, blockSize, gradientSize)
-    public static void goodFeaturesToTrack(Mat image, MatOfPoint corners, int maxCorners, double qualityLevel, double minDistance, Mat mask, int blockSize, int gradientSize)
-    {
-        Mat corners_mat = corners;
-        goodFeaturesToTrack_1(image.nativeObj, corners_mat.nativeObj, maxCorners, qualityLevel, minDistance, mask.nativeObj, blockSize, gradientSize);
-        
-        return;
-    }
-
-
-    //
     // C++:  void goodFeaturesToTrack(Mat image, vector_Point& corners, int maxCorners, double qualityLevel, double minDistance, Mat mask = Mat(), int blockSize = 3, bool useHarrisDetector = false, double k = 0.04)
     //
 
@@ -2395,7 +2285,7 @@ public class Imgproc {
     public static void goodFeaturesToTrack(Mat image, MatOfPoint corners, int maxCorners, double qualityLevel, double minDistance, Mat mask, int blockSize, boolean useHarrisDetector, double k)
     {
         Mat corners_mat = corners;
-        goodFeaturesToTrack_2(image.nativeObj, corners_mat.nativeObj, maxCorners, qualityLevel, minDistance, mask.nativeObj, blockSize, useHarrisDetector, k);
+        goodFeaturesToTrack_0(image.nativeObj, corners_mat.nativeObj, maxCorners, qualityLevel, minDistance, mask.nativeObj, blockSize, useHarrisDetector, k);
         
         return;
     }
@@ -2404,7 +2294,7 @@ public class Imgproc {
     public static void goodFeaturesToTrack(Mat image, MatOfPoint corners, int maxCorners, double qualityLevel, double minDistance)
     {
         Mat corners_mat = corners;
-        goodFeaturesToTrack_3(image.nativeObj, corners_mat.nativeObj, maxCorners, qualityLevel, minDistance);
+        goodFeaturesToTrack_1(image.nativeObj, corners_mat.nativeObj, maxCorners, qualityLevel, minDistance);
         
         return;
     }
@@ -2567,7 +2457,6 @@ public class Imgproc {
     //
 
     //javadoc: linearPolar(src, dst, center, maxRadius, flags)
-    @Deprecated
     public static void linearPolar(Mat src, Mat dst, Point center, double maxRadius, int flags)
     {
         
@@ -2582,7 +2471,6 @@ public class Imgproc {
     //
 
     //javadoc: logPolar(src, dst, center, M, flags)
-    @Deprecated
     public static void logPolar(Mat src, Mat dst, Point center, double M, int flags)
     {
         
@@ -2888,38 +2776,6 @@ public class Imgproc {
 
 
     //
-    // C++:  void rectangle(Mat& img, Rect rec, Scalar color, int thickness = 1, int lineType = LINE_8, int shift = 0)
-    //
-
-    //javadoc: rectangle(img, rec, color, thickness, lineType, shift)
-    public static void rectangle(Mat img, Rect rec, Scalar color, int thickness, int lineType, int shift)
-    {
-        
-        rectangle_3(img.nativeObj, rec.x, rec.y, rec.width, rec.height, color.val[0], color.val[1], color.val[2], color.val[3], thickness, lineType, shift);
-        
-        return;
-    }
-
-    //javadoc: rectangle(img, rec, color, thickness)
-    public static void rectangle(Mat img, Rect rec, Scalar color, int thickness)
-    {
-        
-        rectangle_4(img.nativeObj, rec.x, rec.y, rec.width, rec.height, color.val[0], color.val[1], color.val[2], color.val[3], thickness);
-        
-        return;
-    }
-
-    //javadoc: rectangle(img, rec, color)
-    public static void rectangle(Mat img, Rect rec, Scalar color)
-    {
-        
-        rectangle_5(img.nativeObj, rec.x, rec.y, rec.width, rec.height, color.val[0], color.val[1], color.val[2], color.val[3]);
-        
-        return;
-    }
-
-
-    //
     // C++:  void remap(Mat src, Mat& dst, Mat map1, Mat map2, int interpolation, int borderMode = BORDER_CONSTANT, Scalar borderValue = Scalar())
     //
 
@@ -3085,20 +2941,6 @@ public class Imgproc {
 
 
     //
-    // C++:  void undistortPoints(Mat src, Mat& dst, Mat cameraMatrix, Mat distCoeffs, Mat R, Mat P, TermCriteria criteria)
-    //
-
-    //javadoc: undistortPoints(src, dst, cameraMatrix, distCoeffs, R, P, criteria)
-    public static void undistortPointsIter(Mat src, Mat dst, Mat cameraMatrix, Mat distCoeffs, Mat R, Mat P, TermCriteria criteria)
-    {
-        
-        undistortPointsIter_0(src.nativeObj, dst.nativeObj, cameraMatrix.nativeObj, distCoeffs.nativeObj, R.nativeObj, P.nativeObj, criteria.type, criteria.maxCount, criteria.epsilon);
-        
-        return;
-    }
-
-
-    //
     // C++:  void undistortPoints(Mat src, Mat& dst, Mat cameraMatrix, Mat distCoeffs, Mat R = Mat(), Mat P = Mat())
     //
 
@@ -3186,20 +3028,6 @@ public class Imgproc {
 
 
     //
-    // C++:  void warpPolar(Mat src, Mat& dst, Size dsize, Point2f center, double maxRadius, int flags)
-    //
-
-    //javadoc: warpPolar(src, dst, dsize, center, maxRadius, flags)
-    public static void warpPolar(Mat src, Mat dst, Size dsize, Point center, double maxRadius, int flags)
-    {
-        
-        warpPolar_0(src.nativeObj, dst.nativeObj, dsize.width, dsize.height, center.x, center.y, maxRadius, flags);
-        
-        return;
-    }
-
-
-    //
     // C++:  void watershed(Mat image, Mat& markers)
     //
 
@@ -3273,12 +3101,6 @@ public static Size getTextSize(String text, int fontFace, double fontScale, int 
     // C++:  RotatedRect fitEllipse(vector_Point2f points)
     private static native double[] fitEllipse_0(long points_mat_nativeObj);
 
-    // C++:  RotatedRect fitEllipseAMS(Mat points)
-    private static native double[] fitEllipseAMS_0(long points_nativeObj);
-
-    // C++:  RotatedRect fitEllipseDirect(Mat points)
-    private static native double[] fitEllipseDirect_0(long points_nativeObj);
-
     // C++:  RotatedRect minAreaRect(vector_Point2f points)
     private static native double[] minAreaRect_0(long points_mat_nativeObj);
 
@@ -3297,10 +3119,6 @@ public static Size getTextSize(String text, int fontFace, double fontScale, int 
     // C++:  double contourArea(Mat contour, bool oriented = false)
     private static native double contourArea_0(long contour_nativeObj, boolean oriented);
     private static native double contourArea_1(long contour_nativeObj);
-
-    // C++:  double getFontScaleFromHeight(int fontFace, int pixelHeight, int thickness = 1)
-    private static native double getFontScaleFromHeight_0(int fontFace, int pixelHeight, int thickness);
-    private static native double getFontScaleFromHeight_1(int fontFace, int pixelHeight);
 
     // C++:  double matchShapes(Mat contour1, Mat contour2, int method, double parameter)
     private static native double matchShapes_0(long contour1_nativeObj, long contour2_nativeObj, int method, double parameter);
@@ -3371,9 +3189,6 @@ public static Size getTextSize(String text, int fontFace, double fontScale, int 
     // C++:  void HoughLinesP(Mat image, Mat& lines, double rho, double theta, int threshold, double minLineLength = 0, double maxLineGap = 0)
     private static native void HoughLinesP_0(long image_nativeObj, long lines_nativeObj, double rho, double theta, int threshold, double minLineLength, double maxLineGap);
     private static native void HoughLinesP_1(long image_nativeObj, long lines_nativeObj, double rho, double theta, int threshold);
-
-    // C++:  void HoughLinesPointSet(Mat _point, Mat& _lines, int lines_max, int threshold, double min_rho, double max_rho, double rho_step, double min_theta, double max_theta, double theta_step)
-    private static native void HoughLinesPointSet_0(long _point_nativeObj, long _lines_nativeObj, int lines_max, int threshold, double min_rho, double max_rho, double rho_step, double min_theta, double max_theta, double theta_step);
 
     // C++:  void HuMoments(Moments m, Mat& hu)
     private static native void HuMoments_0(double m_m00, double m_m10, double m_m01, double m_m20, double m_m11, double m_m02, double m_m30, double m_m21, double m_m12, double m_m03, long hu_nativeObj);
@@ -3488,9 +3303,6 @@ public static Size getTextSize(String text, int fontFace, double fontScale, int 
     private static native void cvtColor_0(long src_nativeObj, long dst_nativeObj, int code, int dstCn);
     private static native void cvtColor_1(long src_nativeObj, long dst_nativeObj, int code);
 
-    // C++:  void cvtColorTwoPlane(Mat src1, Mat src2, Mat& dst, int code)
-    private static native void cvtColorTwoPlane_0(long src1_nativeObj, long src2_nativeObj, long dst_nativeObj, int code);
-
     // C++:  void demosaicing(Mat _src, Mat& _dst, int code, int dcn = 0)
     private static native void demosaicing_0(long _src_nativeObj, long _dst_nativeObj, int code, int dcn);
     private static native void demosaicing_1(long _src_nativeObj, long _dst_nativeObj, int code);
@@ -3566,13 +3378,9 @@ public static Size getTextSize(String text, int fontFace, double fontScale, int 
     private static native void getRectSubPix_0(long image_nativeObj, double patchSize_width, double patchSize_height, double center_x, double center_y, long patch_nativeObj, int patchType);
     private static native void getRectSubPix_1(long image_nativeObj, double patchSize_width, double patchSize_height, double center_x, double center_y, long patch_nativeObj);
 
-    // C++:  void goodFeaturesToTrack(Mat image, vector_Point& corners, int maxCorners, double qualityLevel, double minDistance, Mat mask, int blockSize, int gradientSize, bool useHarrisDetector = false, double k = 0.04)
-    private static native void goodFeaturesToTrack_0(long image_nativeObj, long corners_mat_nativeObj, int maxCorners, double qualityLevel, double minDistance, long mask_nativeObj, int blockSize, int gradientSize, boolean useHarrisDetector, double k);
-    private static native void goodFeaturesToTrack_1(long image_nativeObj, long corners_mat_nativeObj, int maxCorners, double qualityLevel, double minDistance, long mask_nativeObj, int blockSize, int gradientSize);
-
     // C++:  void goodFeaturesToTrack(Mat image, vector_Point& corners, int maxCorners, double qualityLevel, double minDistance, Mat mask = Mat(), int blockSize = 3, bool useHarrisDetector = false, double k = 0.04)
-    private static native void goodFeaturesToTrack_2(long image_nativeObj, long corners_mat_nativeObj, int maxCorners, double qualityLevel, double minDistance, long mask_nativeObj, int blockSize, boolean useHarrisDetector, double k);
-    private static native void goodFeaturesToTrack_3(long image_nativeObj, long corners_mat_nativeObj, int maxCorners, double qualityLevel, double minDistance);
+    private static native void goodFeaturesToTrack_0(long image_nativeObj, long corners_mat_nativeObj, int maxCorners, double qualityLevel, double minDistance, long mask_nativeObj, int blockSize, boolean useHarrisDetector, double k);
+    private static native void goodFeaturesToTrack_1(long image_nativeObj, long corners_mat_nativeObj, int maxCorners, double qualityLevel, double minDistance);
 
     // C++:  void grabCut(Mat img, Mat& mask, Rect rect, Mat& bgdModel, Mat& fgdModel, int iterCount, int mode = GC_EVAL)
     private static native void grabCut_0(long img_nativeObj, long mask_nativeObj, int rect_x, int rect_y, int rect_width, int rect_height, long bgdModel_nativeObj, long fgdModel_nativeObj, int iterCount, int mode);
@@ -3655,11 +3463,6 @@ public static Size getTextSize(String text, int fontFace, double fontScale, int 
     private static native void rectangle_1(long img_nativeObj, double pt1_x, double pt1_y, double pt2_x, double pt2_y, double color_val0, double color_val1, double color_val2, double color_val3, int thickness);
     private static native void rectangle_2(long img_nativeObj, double pt1_x, double pt1_y, double pt2_x, double pt2_y, double color_val0, double color_val1, double color_val2, double color_val3);
 
-    // C++:  void rectangle(Mat& img, Rect rec, Scalar color, int thickness = 1, int lineType = LINE_8, int shift = 0)
-    private static native void rectangle_3(long img_nativeObj, int rec_x, int rec_y, int rec_width, int rec_height, double color_val0, double color_val1, double color_val2, double color_val3, int thickness, int lineType, int shift);
-    private static native void rectangle_4(long img_nativeObj, int rec_x, int rec_y, int rec_width, int rec_height, double color_val0, double color_val1, double color_val2, double color_val3, int thickness);
-    private static native void rectangle_5(long img_nativeObj, int rec_x, int rec_y, int rec_width, int rec_height, double color_val0, double color_val1, double color_val2, double color_val3);
-
     // C++:  void remap(Mat src, Mat& dst, Mat map1, Mat map2, int interpolation, int borderMode = BORDER_CONSTANT, Scalar borderValue = Scalar())
     private static native void remap_0(long src_nativeObj, long dst_nativeObj, long map1_nativeObj, long map2_nativeObj, int interpolation, int borderMode, double borderValue_val0, double borderValue_val1, double borderValue_val2, double borderValue_val3);
     private static native void remap_1(long src_nativeObj, long dst_nativeObj, long map1_nativeObj, long map2_nativeObj, int interpolation);
@@ -3687,9 +3490,6 @@ public static Size getTextSize(String text, int fontFace, double fontScale, int 
     private static native void undistort_0(long src_nativeObj, long dst_nativeObj, long cameraMatrix_nativeObj, long distCoeffs_nativeObj, long newCameraMatrix_nativeObj);
     private static native void undistort_1(long src_nativeObj, long dst_nativeObj, long cameraMatrix_nativeObj, long distCoeffs_nativeObj);
 
-    // C++:  void undistortPoints(Mat src, Mat& dst, Mat cameraMatrix, Mat distCoeffs, Mat R, Mat P, TermCriteria criteria)
-    private static native void undistortPointsIter_0(long src_nativeObj, long dst_nativeObj, long cameraMatrix_nativeObj, long distCoeffs_nativeObj, long R_nativeObj, long P_nativeObj, int criteria_type, int criteria_maxCount, double criteria_epsilon);
-
     // C++:  void undistortPoints(Mat src, Mat& dst, Mat cameraMatrix, Mat distCoeffs, Mat R = Mat(), Mat P = Mat())
     private static native void undistortPoints_0(long src_nativeObj, long dst_nativeObj, long cameraMatrix_nativeObj, long distCoeffs_nativeObj, long R_nativeObj, long P_nativeObj);
     private static native void undistortPoints_1(long src_nativeObj, long dst_nativeObj, long cameraMatrix_nativeObj, long distCoeffs_nativeObj);
@@ -3703,9 +3503,6 @@ public static Size getTextSize(String text, int fontFace, double fontScale, int 
     private static native void warpPerspective_0(long src_nativeObj, long dst_nativeObj, long M_nativeObj, double dsize_width, double dsize_height, int flags, int borderMode, double borderValue_val0, double borderValue_val1, double borderValue_val2, double borderValue_val3);
     private static native void warpPerspective_1(long src_nativeObj, long dst_nativeObj, long M_nativeObj, double dsize_width, double dsize_height, int flags);
     private static native void warpPerspective_2(long src_nativeObj, long dst_nativeObj, long M_nativeObj, double dsize_width, double dsize_height);
-
-    // C++:  void warpPolar(Mat src, Mat& dst, Size dsize, Point2f center, double maxRadius, int flags)
-    private static native void warpPolar_0(long src_nativeObj, long dst_nativeObj, double dsize_width, double dsize_height, double center_x, double center_y, double maxRadius, int flags);
 
     // C++:  void watershed(Mat image, Mat& markers)
     private static native void watershed_0(long image_nativeObj, long markers_nativeObj);

@@ -1,3 +1,4 @@
+
 //
 // This file is auto-generated. Please don't modify it!
 //
@@ -6,18 +7,14 @@ package org.opencv.photo;
 import java.util.ArrayList;
 import java.util.List;
 import org.opencv.core.Mat;
-import org.opencv.photo.MergeExposures;
 import org.opencv.utils.Converters;
 
 // C++: class MergeMertens
 //javadoc: MergeMertens
-
 public class MergeMertens extends MergeExposures {
 
     protected MergeMertens(long addr) { super(addr); }
 
-    // internal usage only
-    public static MergeMertens __fromPtr__(long addr) { return new MergeMertens(addr); }
 
     //
     // C++:  float getContrastWeight()

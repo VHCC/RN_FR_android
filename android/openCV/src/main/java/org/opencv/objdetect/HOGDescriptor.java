@@ -1,3 +1,4 @@
+
 //
 // This file is auto-generated. Please don't modify it!
 //
@@ -16,16 +17,12 @@ import org.opencv.utils.Converters;
 
 // C++: class HOGDescriptor
 //javadoc: HOGDescriptor
-
 public class HOGDescriptor {
 
     protected final long nativeObj;
     protected HOGDescriptor(long addr) { nativeObj = addr; }
 
     public long getNativeObjAddr() { return nativeObj; }
-
-    // internal usage only
-    public static HOGDescriptor __fromPtr__(long addr) { return new HOGDescriptor(addr); }
 
     public static final int
             L2Hys = 0,

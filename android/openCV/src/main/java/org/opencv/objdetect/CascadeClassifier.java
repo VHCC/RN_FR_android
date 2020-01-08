@@ -1,3 +1,4 @@
+
 //
 // This file is auto-generated. Please don't modify it!
 //
@@ -15,16 +16,12 @@ import org.opencv.utils.Converters;
 
 // C++: class CascadeClassifier
 //javadoc: CascadeClassifier
-
 public class CascadeClassifier {
 
     protected final long nativeObj;
     protected CascadeClassifier(long addr) { nativeObj = addr; }
 
     public long getNativeObjAddr() { return nativeObj; }
-
-    // internal usage only
-    public static CascadeClassifier __fromPtr__(long addr) { return new CascadeClassifier(addr); }
 
     //
     // C++:   CascadeClassifier(String filename)
@@ -155,14 +152,6 @@ public class CascadeClassifier {
         Mat objects_mat = objects;
         detectMultiScale_0(nativeObj, image.nativeObj, objects_mat.nativeObj, scaleFactor, minNeighbors, flags, minSize.width, minSize.height, maxSize.width, maxSize.height);
         
-        return;
-    }
-
-    public  void detectMultiScale(Mat image, MatOfRect objects, double v, int i, int i1, Size size)
-    {
-        Mat objects_mat = objects;
-        detectMultiScale_1(nativeObj, image.nativeObj, objects_mat.nativeObj);
-
         return;
     }
 

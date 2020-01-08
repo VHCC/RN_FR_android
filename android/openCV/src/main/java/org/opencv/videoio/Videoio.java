@@ -1,12 +1,10 @@
+
 //
 // This file is auto-generated. Please don't modify it!
 //
 package org.opencv.videoio;
 
 
-
-// C++: class Videoio
-//javadoc: Videoio
 
 public class Videoio {
 
@@ -372,7 +370,6 @@ public class Videoio {
             CAP_ARAVIS = 2100,
             CAP_OPENCV_MJPEG = 2200,
             CAP_INTEL_MFX = 2300,
-            CAP_XINE = 2400,
             CAP_PROP_POS_MSEC = 0,
             CAP_PROP_POS_FRAMES = 1,
             CAP_PROP_POS_AVI_RATIO = 2,
@@ -412,8 +409,6 @@ public class Videoio {
             CAP_PROP_SETTINGS = 37,
             CAP_PROP_BUFFERSIZE = 38,
             CAP_PROP_AUTOFOCUS = 39,
-            CAP_PROP_SAR_NUM = 40,
-            CAP_PROP_SAR_DEN = 41,
             CAP_MODE_BGR = 0,
             CAP_MODE_RGB = 1,
             CAP_MODE_GRAY = 2,

@@ -1,19 +1,17 @@
+
 //
 // This file is auto-generated. Please don't modify it!
 //
 package org.opencv.photo;
 
-import org.opencv.photo.Tonemap;
+
 
 // C++: class TonemapMantiuk
 //javadoc: TonemapMantiuk
-
 public class TonemapMantiuk extends Tonemap {
 
     protected TonemapMantiuk(long addr) { super(addr); }
 
-    // internal usage only
-    public static TonemapMantiuk __fromPtr__(long addr) { return new TonemapMantiuk(addr); }
 
     //
     // C++:  float getSaturation()

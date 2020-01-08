@@ -1,3 +1,4 @@
+
 //
 // This file is auto-generated. Please don't modify it!
 //
@@ -8,21 +9,7 @@ import java.util.List;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfFloat;
 import org.opencv.core.Point;
-import org.opencv.photo.AlignMTB;
-import org.opencv.photo.CalibrateDebevec;
-import org.opencv.photo.CalibrateRobertson;
-import org.opencv.photo.MergeDebevec;
-import org.opencv.photo.MergeMertens;
-import org.opencv.photo.MergeRobertson;
-import org.opencv.photo.Tonemap;
-import org.opencv.photo.TonemapDrago;
-import org.opencv.photo.TonemapDurand;
-import org.opencv.photo.TonemapMantiuk;
-import org.opencv.photo.TonemapReinhard;
 import org.opencv.utils.Converters;
-
-// C++: class Photo
-//javadoc: Photo
 
 public class Photo {
 
@@ -50,7 +37,7 @@ public class Photo {
     public static AlignMTB createAlignMTB(int max_bits, int exclude_range, boolean cut)
     {
         
-        AlignMTB retVal = AlignMTB.__fromPtr__(createAlignMTB_0(max_bits, exclude_range, cut));
+        AlignMTB retVal = new AlignMTB(createAlignMTB_0(max_bits, exclude_range, cut));
         
         return retVal;
     }
@@ -59,7 +46,7 @@ public class Photo {
     public static AlignMTB createAlignMTB()
     {
         
-        AlignMTB retVal = AlignMTB.__fromPtr__(createAlignMTB_1());
+        AlignMTB retVal = new AlignMTB(createAlignMTB_1());
         
         return retVal;
     }
@@ -73,7 +60,7 @@ public class Photo {
     public static CalibrateDebevec createCalibrateDebevec(int samples, float lambda, boolean random)
     {
         
-        CalibrateDebevec retVal = CalibrateDebevec.__fromPtr__(createCalibrateDebevec_0(samples, lambda, random));
+        CalibrateDebevec retVal = new CalibrateDebevec(createCalibrateDebevec_0(samples, lambda, random));
         
         return retVal;
     }
@@ -82,7 +69,7 @@ public class Photo {
     public static CalibrateDebevec createCalibrateDebevec()
     {
         
-        CalibrateDebevec retVal = CalibrateDebevec.__fromPtr__(createCalibrateDebevec_1());
+        CalibrateDebevec retVal = new CalibrateDebevec(createCalibrateDebevec_1());
         
         return retVal;
     }
@@ -96,7 +83,7 @@ public class Photo {
     public static CalibrateRobertson createCalibrateRobertson(int max_iter, float threshold)
     {
         
-        CalibrateRobertson retVal = CalibrateRobertson.__fromPtr__(createCalibrateRobertson_0(max_iter, threshold));
+        CalibrateRobertson retVal = new CalibrateRobertson(createCalibrateRobertson_0(max_iter, threshold));
         
         return retVal;
     }
@@ -105,7 +92,7 @@ public class Photo {
     public static CalibrateRobertson createCalibrateRobertson()
     {
         
-        CalibrateRobertson retVal = CalibrateRobertson.__fromPtr__(createCalibrateRobertson_1());
+        CalibrateRobertson retVal = new CalibrateRobertson(createCalibrateRobertson_1());
         
         return retVal;
     }
@@ -119,7 +106,7 @@ public class Photo {
     public static MergeDebevec createMergeDebevec()
     {
         
-        MergeDebevec retVal = MergeDebevec.__fromPtr__(createMergeDebevec_0());
+        MergeDebevec retVal = new MergeDebevec(createMergeDebevec_0());
         
         return retVal;
     }
@@ -133,7 +120,7 @@ public class Photo {
     public static MergeMertens createMergeMertens(float contrast_weight, float saturation_weight, float exposure_weight)
     {
         
-        MergeMertens retVal = MergeMertens.__fromPtr__(createMergeMertens_0(contrast_weight, saturation_weight, exposure_weight));
+        MergeMertens retVal = new MergeMertens(createMergeMertens_0(contrast_weight, saturation_weight, exposure_weight));
         
         return retVal;
     }
@@ -142,7 +129,7 @@ public class Photo {
     public static MergeMertens createMergeMertens()
     {
         
-        MergeMertens retVal = MergeMertens.__fromPtr__(createMergeMertens_1());
+        MergeMertens retVal = new MergeMertens(createMergeMertens_1());
         
         return retVal;
     }
@@ -156,7 +143,7 @@ public class Photo {
     public static MergeRobertson createMergeRobertson()
     {
         
-        MergeRobertson retVal = MergeRobertson.__fromPtr__(createMergeRobertson_0());
+        MergeRobertson retVal = new MergeRobertson(createMergeRobertson_0());
         
         return retVal;
     }
@@ -170,7 +157,7 @@ public class Photo {
     public static Tonemap createTonemap(float gamma)
     {
         
-        Tonemap retVal = Tonemap.__fromPtr__(createTonemap_0(gamma));
+        Tonemap retVal = new Tonemap(createTonemap_0(gamma));
         
         return retVal;
     }
@@ -179,7 +166,7 @@ public class Photo {
     public static Tonemap createTonemap()
     {
         
-        Tonemap retVal = Tonemap.__fromPtr__(createTonemap_1());
+        Tonemap retVal = new Tonemap(createTonemap_1());
         
         return retVal;
     }
@@ -193,7 +180,7 @@ public class Photo {
     public static TonemapDrago createTonemapDrago(float gamma, float saturation, float bias)
     {
         
-        TonemapDrago retVal = TonemapDrago.__fromPtr__(createTonemapDrago_0(gamma, saturation, bias));
+        TonemapDrago retVal = new TonemapDrago(createTonemapDrago_0(gamma, saturation, bias));
         
         return retVal;
     }
@@ -202,7 +189,7 @@ public class Photo {
     public static TonemapDrago createTonemapDrago()
     {
         
-        TonemapDrago retVal = TonemapDrago.__fromPtr__(createTonemapDrago_1());
+        TonemapDrago retVal = new TonemapDrago(createTonemapDrago_1());
         
         return retVal;
     }
@@ -216,7 +203,7 @@ public class Photo {
     public static TonemapDurand createTonemapDurand(float gamma, float contrast, float saturation, float sigma_space, float sigma_color)
     {
         
-        TonemapDurand retVal = TonemapDurand.__fromPtr__(createTonemapDurand_0(gamma, contrast, saturation, sigma_space, sigma_color));
+        TonemapDurand retVal = new TonemapDurand(createTonemapDurand_0(gamma, contrast, saturation, sigma_space, sigma_color));
         
         return retVal;
     }
@@ -225,7 +212,7 @@ public class Photo {
     public static TonemapDurand createTonemapDurand()
     {
         
-        TonemapDurand retVal = TonemapDurand.__fromPtr__(createTonemapDurand_1());
+        TonemapDurand retVal = new TonemapDurand(createTonemapDurand_1());
         
         return retVal;
     }
@@ -239,7 +226,7 @@ public class Photo {
     public static TonemapMantiuk createTonemapMantiuk(float gamma, float scale, float saturation)
     {
         
-        TonemapMantiuk retVal = TonemapMantiuk.__fromPtr__(createTonemapMantiuk_0(gamma, scale, saturation));
+        TonemapMantiuk retVal = new TonemapMantiuk(createTonemapMantiuk_0(gamma, scale, saturation));
         
         return retVal;
     }
@@ -248,7 +235,7 @@ public class Photo {
     public static TonemapMantiuk createTonemapMantiuk()
     {
         
-        TonemapMantiuk retVal = TonemapMantiuk.__fromPtr__(createTonemapMantiuk_1());
+        TonemapMantiuk retVal = new TonemapMantiuk(createTonemapMantiuk_1());
         
         return retVal;
     }
@@ -262,7 +249,7 @@ public class Photo {
     public static TonemapReinhard createTonemapReinhard(float gamma, float intensity, float light_adapt, float color_adapt)
     {
         
-        TonemapReinhard retVal = TonemapReinhard.__fromPtr__(createTonemapReinhard_0(gamma, intensity, light_adapt, color_adapt));
+        TonemapReinhard retVal = new TonemapReinhard(createTonemapReinhard_0(gamma, intensity, light_adapt, color_adapt));
         
         return retVal;
     }
@@ -271,7 +258,7 @@ public class Photo {
     public static TonemapReinhard createTonemapReinhard()
     {
         
-        TonemapReinhard retVal = TonemapReinhard.__fromPtr__(createTonemapReinhard_1());
+        TonemapReinhard retVal = new TonemapReinhard(createTonemapReinhard_1());
         
         return retVal;
     }

@@ -1,3 +1,4 @@
+
 //
 // This file is auto-generated. Please don't modify it!
 //
@@ -13,24 +14,22 @@ import org.opencv.core.Scalar;
 import org.opencv.core.TermCriteria;
 import org.opencv.utils.Converters;
 
-// C++: class Core
-//javadoc: Core
-
 public class Core {
+
     // these constants are wrapped inside functions to prevent inlining
-    private static String getVersion() { return "4.0.0-pre"; }
-    private static String getNativeLibraryName() { return "opencv_java400"; }
-    private static int getVersionMajorJ() { return 4; }
-    private static int getVersionMinorJ() { return 0; }
-    private static int getVersionRevisionJ() { return 0; }
-    private static String getVersionStatusJ() { return "-pre"; }
+    private static String getVersion() { return "3.3.0"; }
+    private static String getNativeLibraryName() { return "opencv_java330"; }
+    private static int getVersionMajor() { return 3; }
+    private static int getVersionMinor() { return 3; }
+    private static int getVersionRevision() { return 0; }
+    private static String getVersionStatus() { return ""; }
 
     public static final String VERSION = getVersion();
     public static final String NATIVE_LIBRARY_NAME = getNativeLibraryName();
-    public static final int VERSION_MAJOR = getVersionMajorJ();
-    public static final int VERSION_MINOR = getVersionMinorJ();
-    public static final int VERSION_REVISION = getVersionRevisionJ();
-    public static final String VERSION_STATUS = getVersionStatusJ();
+    public static final int VERSION_MAJOR = getVersionMajor();
+    public static final int VERSION_MINOR = getVersionMinor();
+    public static final int VERSION_REVISION = getVersionRevision();
+    public static final String VERSION_STATUS = getVersionStatus();
 
     private static final int
             CV_8U = 0,
@@ -254,48 +253,6 @@ public class Core {
 
 
     //
-    // C++:  String getHardwareFeatureName(int feature)
-    //
-
-    //javadoc: getHardwareFeatureName(feature)
-    public static String getHardwareFeatureName(int feature)
-    {
-        
-        String retVal = getHardwareFeatureName_0(feature);
-        
-        return retVal;
-    }
-
-
-    //
-    // C++:  String getVersionString()
-    //
-
-    //javadoc: getVersionString()
-    public static String getVersionString()
-    {
-        
-        String retVal = getVersionString_0();
-        
-        return retVal;
-    }
-
-
-    //
-    // C++:  String getIppVersion()
-    //
-
-    //javadoc: getIppVersion()
-    public static String getIppVersion()
-    {
-        
-        String retVal = getIppVersion_0();
-        
-        return retVal;
-    }
-
-
-    //
     // C++:  bool checkRange(Mat a, bool quiet = true,  _hidden_ * pos = 0, double minVal = -DBL_MAX, double maxVal = DBL_MAX)
     //
 
@@ -373,20 +330,6 @@ public class Core {
     {
         
         boolean retVal = useIPP_0();
-        
-        return retVal;
-    }
-
-
-    //
-    // C++:  bool useIPP_NE()
-    //
-
-    //javadoc: useIPP_NE()
-    public static boolean useIPP_NE()
-    {
-        
-        boolean retVal = useIPP_NE_0();
         
         return retVal;
     }
@@ -684,53 +627,10 @@ public class Core {
     //
 
     //javadoc: getThreadNum()
-    @Deprecated
     public static int getThreadNum()
     {
         
         int retVal = getThreadNum_0();
-        
-        return retVal;
-    }
-
-
-    //
-    // C++:  int getVersionMajor()
-    //
-
-    //javadoc: getVersionMajor()
-    public static int getVersionMajor()
-    {
-        
-        int retVal = getVersionMajor_0();
-        
-        return retVal;
-    }
-
-
-    //
-    // C++:  int getVersionMinor()
-    //
-
-    //javadoc: getVersionMinor()
-    public static int getVersionMinor()
-    {
-        
-        int retVal = getVersionMinor_0();
-        
-        return retVal;
-    }
-
-
-    //
-    // C++:  int getVersionRevision()
-    //
-
-    //javadoc: getVersionRevision()
-    public static int getVersionRevision()
-    {
-        
-        int retVal = getVersionRevision_0();
         
         return retVal;
     }
@@ -1208,23 +1108,23 @@ public class Core {
 
 
     //
-    // C++:  void completeSymm(Mat& m, bool lowerToUpper = false)
+    // C++:  void completeSymm(Mat& mtx, bool lowerToUpper = false)
     //
 
-    //javadoc: completeSymm(m, lowerToUpper)
-    public static void completeSymm(Mat m, boolean lowerToUpper)
+    //javadoc: completeSymm(mtx, lowerToUpper)
+    public static void completeSymm(Mat mtx, boolean lowerToUpper)
     {
         
-        completeSymm_0(m.nativeObj, lowerToUpper);
+        completeSymm_0(mtx.nativeObj, lowerToUpper);
         
         return;
     }
 
-    //javadoc: completeSymm(m)
-    public static void completeSymm(Mat m)
+    //javadoc: completeSymm(mtx)
+    public static void completeSymm(Mat mtx)
     {
         
-        completeSymm_1(m.nativeObj);
+        completeSymm_1(mtx.nativeObj);
         
         return;
     }
@@ -1418,20 +1318,6 @@ public class Core {
     {
         
         divide_7(scale, src2.nativeObj, dst.nativeObj);
-        
-        return;
-    }
-
-
-    //
-    // C++:  void eigenNonSymmetric(Mat src, Mat& eigenvalues, Mat& eigenvectors)
-    //
-
-    //javadoc: eigenNonSymmetric(src, eigenvalues, eigenvectors)
-    public static void eigenNonSymmetric(Mat src, Mat eigenvalues, Mat eigenvectors)
-    {
-        
-        eigenNonSymmetric_0(src.nativeObj, eigenvalues.nativeObj, eigenvectors.nativeObj);
         
         return;
     }
@@ -2357,20 +2243,6 @@ public class Core {
         return;
     }
 
-
-    //
-    // C++:  void setUseIPP_NE(bool flag)
-    //
-
-    //javadoc: setUseIPP_NE(flag)
-    public static void setUseIPP_NE(boolean flag)
-    {
-        
-        setUseIPP_NE_0(flag);
-        
-        return;
-    }
-
 // manual port
 public static class MinMaxLocResult {
     public double minVal;
@@ -2427,15 +2299,6 @@ public static MinMaxLocResult minMaxLoc(Mat src) {
     // C++:  String getBuildInformation()
     private static native String getBuildInformation_0();
 
-    // C++:  String getHardwareFeatureName(int feature)
-    private static native String getHardwareFeatureName_0(int feature);
-
-    // C++:  String getVersionString()
-    private static native String getVersionString_0();
-
-    // C++:  String getIppVersion()
-    private static native String getIppVersion_0();
-
     // C++:  bool checkRange(Mat a, bool quiet = true,  _hidden_ * pos = 0, double minVal = -DBL_MAX, double maxVal = DBL_MAX)
     private static native boolean checkRange_0(long a_nativeObj, boolean quiet, double minVal, double maxVal);
     private static native boolean checkRange_1(long a_nativeObj);
@@ -2450,9 +2313,6 @@ public static MinMaxLocResult minMaxLoc(Mat src) {
 
     // C++:  bool useIPP()
     private static native boolean useIPP_0();
-
-    // C++:  bool useIPP_NE()
-    private static native boolean useIPP_NE_0();
 
     // C++:  double Mahalanobis(Mat v1, Mat v2, Mat icovar)
     private static native double Mahalanobis_0(long v1_nativeObj, long v2_nativeObj, long icovar_nativeObj);
@@ -2511,15 +2371,6 @@ public static MinMaxLocResult minMaxLoc(Mat src) {
 
     // C++:  int getThreadNum()
     private static native int getThreadNum_0();
-
-    // C++:  int getVersionMajor()
-    private static native int getVersionMajor_0();
-
-    // C++:  int getVersionMinor()
-    private static native int getVersionMinor_0();
-
-    // C++:  int getVersionRevision()
-    private static native int getVersionRevision_0();
 
     // C++:  int solveCubic(Mat coeffs, Mat& roots)
     private static native int solveCubic_0(long coeffs_nativeObj, long roots_nativeObj);
@@ -2608,9 +2459,9 @@ public static MinMaxLocResult minMaxLoc(Mat src) {
     // C++:  void compare(Mat src1, Scalar src2, Mat& dst, int cmpop)
     private static native void compare_1(long src1_nativeObj, double src2_val0, double src2_val1, double src2_val2, double src2_val3, long dst_nativeObj, int cmpop);
 
-    // C++:  void completeSymm(Mat& m, bool lowerToUpper = false)
-    private static native void completeSymm_0(long m_nativeObj, boolean lowerToUpper);
-    private static native void completeSymm_1(long m_nativeObj);
+    // C++:  void completeSymm(Mat& mtx, bool lowerToUpper = false)
+    private static native void completeSymm_0(long mtx_nativeObj, boolean lowerToUpper);
+    private static native void completeSymm_1(long mtx_nativeObj);
 
     // C++:  void convertFp16(Mat src, Mat& dst)
     private static native void convertFp16_0(long src_nativeObj, long dst_nativeObj);
@@ -2644,9 +2495,6 @@ public static MinMaxLocResult minMaxLoc(Mat src) {
     // C++:  void divide(double scale, Mat src2, Mat& dst, int dtype = -1)
     private static native void divide_6(double scale, long src2_nativeObj, long dst_nativeObj, int dtype);
     private static native void divide_7(double scale, long src2_nativeObj, long dst_nativeObj);
-
-    // C++:  void eigenNonSymmetric(Mat src, Mat& eigenvalues, Mat& eigenvectors)
-    private static native void eigenNonSymmetric_0(long src_nativeObj, long eigenvalues_nativeObj, long eigenvectors_nativeObj);
 
     // C++:  void exp(Mat src, Mat& dst)
     private static native void exp_0(long src_nativeObj, long dst_nativeObj);
@@ -2821,9 +2669,6 @@ public static MinMaxLocResult minMaxLoc(Mat src) {
 
     // C++:  void setUseIPP(bool flag)
     private static native void setUseIPP_0(boolean flag);
-
-    // C++:  void setUseIPP_NE(bool flag)
-    private static native void setUseIPP_NE_0(boolean flag);
 private static native double[] n_minMaxLocManual(long src_nativeObj, long mask_nativeObj);
 
 }

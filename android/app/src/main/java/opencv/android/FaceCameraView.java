@@ -6,7 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
-import androidx.annotation.Nullable;
+import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -26,7 +26,7 @@ import com.facebook.react.uimanager.events.RCTEventEmitter;
 
 import org.opencv.core.MatOfRect;
 import org.opencv.core.MatOfRect2d;
-import org.opencv.tracking.MultiTracker;
+//import org.opencv.tracking.MultiTracker;
 
 import java.lang.ref.WeakReference;
 import java.util.Map;

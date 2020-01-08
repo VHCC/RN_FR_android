@@ -1,3 +1,4 @@
+
 //
 // This file is auto-generated. Please don't modify it!
 //
@@ -14,12 +15,6 @@ import org.opencv.core.RotatedRect;
 import org.opencv.core.Size;
 import org.opencv.core.TermCriteria;
 import org.opencv.utils.Converters;
-import org.opencv.video.BackgroundSubtractorKNN;
-import org.opencv.video.BackgroundSubtractorMOG2;
-import org.opencv.video.DualTVL1OpticalFlow;
-
-// C++: class Video
-//javadoc: Video
 
 public class Video {
 
@@ -60,7 +55,7 @@ public class Video {
     public static BackgroundSubtractorKNN createBackgroundSubtractorKNN(int history, double dist2Threshold, boolean detectShadows)
     {
         
-        BackgroundSubtractorKNN retVal = BackgroundSubtractorKNN.__fromPtr__(createBackgroundSubtractorKNN_0(history, dist2Threshold, detectShadows));
+        BackgroundSubtractorKNN retVal = new BackgroundSubtractorKNN(createBackgroundSubtractorKNN_0(history, dist2Threshold, detectShadows));
         
         return retVal;
     }
@@ -69,7 +64,7 @@ public class Video {
     public static BackgroundSubtractorKNN createBackgroundSubtractorKNN()
     {
         
-        BackgroundSubtractorKNN retVal = BackgroundSubtractorKNN.__fromPtr__(createBackgroundSubtractorKNN_1());
+        BackgroundSubtractorKNN retVal = new BackgroundSubtractorKNN(createBackgroundSubtractorKNN_1());
         
         return retVal;
     }
@@ -83,7 +78,7 @@ public class Video {
     public static BackgroundSubtractorMOG2 createBackgroundSubtractorMOG2(int history, double varThreshold, boolean detectShadows)
     {
         
-        BackgroundSubtractorMOG2 retVal = BackgroundSubtractorMOG2.__fromPtr__(createBackgroundSubtractorMOG2_0(history, varThreshold, detectShadows));
+        BackgroundSubtractorMOG2 retVal = new BackgroundSubtractorMOG2(createBackgroundSubtractorMOG2_0(history, varThreshold, detectShadows));
         
         return retVal;
     }
@@ -92,7 +87,7 @@ public class Video {
     public static BackgroundSubtractorMOG2 createBackgroundSubtractorMOG2()
     {
         
-        BackgroundSubtractorMOG2 retVal = BackgroundSubtractorMOG2.__fromPtr__(createBackgroundSubtractorMOG2_1());
+        BackgroundSubtractorMOG2 retVal = new BackgroundSubtractorMOG2(createBackgroundSubtractorMOG2_1());
         
         return retVal;
     }
@@ -106,7 +101,7 @@ public class Video {
     public static DualTVL1OpticalFlow createOptFlow_DualTVL1()
     {
         
-        DualTVL1OpticalFlow retVal = DualTVL1OpticalFlow.__fromPtr__(createOptFlow_DualTVL1_0());
+        DualTVL1OpticalFlow retVal = new DualTVL1OpticalFlow(createOptFlow_DualTVL1_0());
         
         return retVal;
     }

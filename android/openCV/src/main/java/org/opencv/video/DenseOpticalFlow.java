@@ -1,3 +1,4 @@
+
 //
 // This file is auto-generated. Please don't modify it!
 //
@@ -8,13 +9,10 @@ import org.opencv.core.Mat;
 
 // C++: class DenseOpticalFlow
 //javadoc: DenseOpticalFlow
-
 public class DenseOpticalFlow extends Algorithm {
 
     protected DenseOpticalFlow(long addr) { super(addr); }
 
-    // internal usage only
-    public static DenseOpticalFlow __fromPtr__(long addr) { return new DenseOpticalFlow(addr); }
 
     //
     // C++:  void calc(Mat I0, Mat I1, Mat& flow)

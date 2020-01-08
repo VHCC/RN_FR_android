@@ -32,8 +32,8 @@ import org.opencv.core.Scalar;
 import org.opencv.core.Size;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
-import org.opencv.tracking.MultiTracker;
-import org.opencv.tracking.TrackerMedianFlow;
+//import org.opencv.tracking.MultiTracker;
+//import org.opencv.tracking.TrackerMedianFlow;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -56,7 +56,7 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
     private static String TAG = "FaceCameraManage";
     private CascadeClassifier classifier;
     private MatOfRect faces;
-    private MultiTracker tracker;
+//    private MultiTracker tracker;
     private MatOfRect2d trackerPoints;
     private Mat rgba, gray;
     private String modelName;
@@ -270,15 +270,15 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
         switch (captureQuality) {
             case FaceModule.CameraCaptureSessionPreset.CameraCaptureSessionPresetLow:
                 this.quality = FaceCameraManage.Quality.LOW;
-                this.setQuality = 0;
+//                this.setQuality = 0;
                 break;
             case FaceModule.CameraCaptureSessionPreset.CameraCaptureSessionPresetMedium:
                 this.quality = FaceCameraManage.Quality.MEDIUM;
-                this.setQuality = 1;
+//                this.setQuality = 1;
                 break;
             case FaceModule.CameraCaptureSessionPreset.CameraCaptureSessionPresetHigh:
                 this.quality = FaceCameraManage.Quality.HIGH;
-                this.setQuality = 2;
+//                this.setQuality = 2;
                 break;
 
         }
@@ -312,13 +312,13 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
         disableView();
         switch (aspect) {
             case FaceModule.CameraAspect.CameraAspectFill:
-                this.aspect = JavaCameraView.CameraAspects.CameraAspectFill;
+//                this.aspect = JavaCameraView.CameraAspects.CameraAspectFill;
                 break;
             case FaceModule.CameraAspect.CameraAspectFit:
-                this.aspect = JavaCameraView.CameraAspects.CameraAspectFit;
+//                this.aspect = JavaCameraView.CameraAspects.CameraAspectFit;
                 break;
             case FaceModule.CameraAspect.CameraAspectStretch:
-                this.aspect = JavaCameraView.CameraAspects.CameraAspectStretch;
+//                this.aspect = JavaCameraView.CameraAspects.CameraAspectStretch;
                 break;
         }
         onResume();
@@ -494,7 +494,7 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
 
     @Override
     public void disableView() {
-        removeCvCameraViewListener();
+//        removeCvCameraViewListener();
         super.disableView();
         if (images != null && !images.isEmpty()) {
             storage.putListMat("images", images);
@@ -507,16 +507,16 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
     private class trackFace extends TimerTask {
         @Override
         public void run() {
-            classifier.detectMultiScale(gray, faces, 1.3, 6, CASCADE_DO_CANNY_PRUNING, new Size(30, 30));
+//            classifier.detectMultiScale(gray, faces, 1.3, 6, CASCADE_DO_CANNY_PRUNING, new Size(30, 30));
             if (!faces.empty()) {
                 Rect[] facesArray = faces.toArray();
                 Rect2d[] trackerArr = new Rect2d[facesArray.length];
                 trackerPoints = new MatOfRect2d();
                 ArrayList<Rect2d> points = new ArrayList<>();
-                tracker = MultiTracker.create();
+//                tracker = MultiTracker.create();
                 for (int i = 0; i < facesArray.length; i++) {
                     points.add(new Rect2d(facesArray[i].tl(), facesArray[i].br()));
-                    tracker.add(TrackerMedianFlow.create(), gray, points.get(i));
+//                    tracker.add(TrackerMedianFlow.create(), gray, points.get(i));
                     trackerArr[i] = points.get(i);
                 }
                 trackerPoints.fromArray(trackerArr);

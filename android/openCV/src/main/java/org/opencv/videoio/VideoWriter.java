@@ -1,3 +1,4 @@
+
 //
 // This file is auto-generated. Please don't modify it!
 //
@@ -9,16 +10,12 @@ import org.opencv.core.Size;
 
 // C++: class VideoWriter
 //javadoc: VideoWriter
-
 public class VideoWriter {
 
     protected final long nativeObj;
     protected VideoWriter(long addr) { nativeObj = addr; }
 
     public long getNativeObjAddr() { return nativeObj; }
-
-    // internal usage only
-    public static VideoWriter __fromPtr__(long addr) { return new VideoWriter(addr); }
 
     //
     // C++:   VideoWriter(String filename, int apiPreference, int fourcc, double fps, Size frameSize, bool isColor = true)
