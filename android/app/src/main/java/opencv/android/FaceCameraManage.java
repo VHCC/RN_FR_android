@@ -124,6 +124,9 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
 
                 gray = inputFrame.gray();
 
+                Core.flip(rgba, rgba, 1);//flip around Y-axis
+                Core.flip(gray, gray, 1);
+
                 float mRelativeFaceSize = 0.1f;
                 if (mAbsoluteFaceSize == 0) {
                     int height = gray.rows();
