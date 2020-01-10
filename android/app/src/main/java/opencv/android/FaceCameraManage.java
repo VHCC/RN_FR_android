@@ -185,7 +185,7 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
 
                 }
 
-                return rgba;
+                return mRgbaT;
             }
         };
     }
