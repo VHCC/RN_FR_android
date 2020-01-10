@@ -175,7 +175,7 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
                             byte[] byteArray = byteArrayOutputStream.toByteArray();
 
                             String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
-                            if (OPENCV_RECOG > 5) {
+                            if (OPENCV_RECOG > 10) {
                                 writeToFile(encoded);
                                 faceCapturedCallback.onFaceBack(encoded);
                                 OPENCV_RECOG = 0;
