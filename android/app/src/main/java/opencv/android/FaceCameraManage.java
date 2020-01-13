@@ -156,35 +156,55 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
                     Rect[] facesArray = faces.toArray();
                     Scalar faceRectColor = new Scalar(255, 255, 255);
 
-                    for (Rect faceRect : facesArray) {
-                        // tl : top-left
-                        // br : bottom-right
-                        if (faceRect.width > FACE_THRESHOLD && faceRect.height > FACE_THRESHOLD) {
-                            OPENCV_RECOG++;
-                            Log.e("WPC", "OPENCV_RECOG= " + OPENCV_RECOG);
-                            Log.e(TAG, " * width= " + faceRect.width + ", height= " + faceRect.height);
-//                        circleOverlay.setVisibility(View.GONE);
+                    Rect faceRect = null;
 
-                            final Bitmap bitmap =
-                                    Bitmap.createBitmap(mRgbaT.cols(), mRgbaT.rows(), Bitmap.Config.RGB_565);
-                            Utils.matToBitmap(mRgbaT, bitmap);
-                            Bitmap faceImageBitmap = Bitmap.createBitmap(bitmap, faceRect.x, faceRect.y, faceRect.width, faceRect.height);
+                    if (facesArray.length > 0) {
+                        faceRect = facesArray[0];
+                    }
 
-
-                            Imgproc.rectangle(mRgbaT, faceRect.tl(), faceRect.br(), faceRectColor, 1);
-
-                            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                            faceImageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-                            byte[] byteArray = byteArrayOutputStream.toByteArray();
-
-                            String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
-                            if (OPENCV_RECOG > 10) {
-                                writeToFile(encoded);
-                                faceCapturedCallback.onFaceBack(encoded);
-                                OPENCV_RECOG = 0;
-                            }
+                    for (int index = 0; index < facesArray.length; index ++) {
+                        if (facesArray[index].height > faceRect.height) {
+                           faceRect = facesArray[index];
                         }
                     }
+
+//                    for (Rect faceRect : facesArray) {
+
+                        if (faceRect != null) {
+                            // tl : top-left
+                            // br : bottom-right
+                            if (faceRect.width > FACE_THRESHOLD && faceRect.height > FACE_THRESHOLD) {
+                                OPENCV_RECOG++;
+                                Log.e("WPC", "OPENCV_RECOG= " + OPENCV_RECOG);
+                                Log.e(TAG, " * width= " + faceRect.width + ", height= " + faceRect.height);
+//                        circleOverlay.setVisibility(View.GONE);
+
+                                final Bitmap bitmap =
+                                        Bitmap.createBitmap(mRgbaT.cols(), mRgbaT.rows(), Bitmap.Config.RGB_565);
+                                Utils.matToBitmap(mRgbaT, bitmap);
+                                Bitmap faceImageBitmap = Bitmap.createBitmap(bitmap,
+                                        faceRect.x,
+                                        faceRect.y,
+                                        faceRect.width,
+                                        faceRect.height);
+
+                                Imgproc.rectangle(mRgbaT, faceRect.tl(), faceRect.br(), faceRectColor, 1);
+
+                                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                                faceImageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                                byte[] byteArray = byteArrayOutputStream.toByteArray();
+
+                                String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
+                                if (OPENCV_RECOG > 10) {
+                                    writeToFile(encoded);
+                                    faceCapturedCallback.onFaceBack(encoded);
+                                    OPENCV_RECOG = 0;
+                                }
+                            }
+                        }
+
+
+//                    }
 
                 }
 
