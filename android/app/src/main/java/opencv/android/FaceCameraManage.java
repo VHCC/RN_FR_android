@@ -135,7 +135,7 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
                     }
                 }
 
-                applyOrientation(rgba, clockwise, rotation);
+//                applyOrientation(rgba, clockwise, rotation);
 
                 Imgproc.cvtColor(rgba, gray, Imgproc.COLOR_RGB2GRAY);
 
