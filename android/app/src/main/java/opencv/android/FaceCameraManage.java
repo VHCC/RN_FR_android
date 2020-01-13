@@ -143,7 +143,21 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
                     Rect[] facesArray = faces.toArray();
                     Scalar faceRectColor = new Scalar(255, 255, 255);
 
-                    for (Rect faceRect : facesArray) {
+                    Rect faceRect = null;
+
+                    if (facesArray.length > 0) {
+                        faceRect = facesArray[0];
+                    }
+
+                    for (int index = 0; index < facesArray.length; index ++) {
+                        if (facesArray[index].height > faceRect.height) {
+                            faceRect = facesArray[index];
+                        }
+                    }
+
+//                    for (Rect faceRect : facesArray) {
+
+                    if (faceRect != null) {
                         // tl : top-left
                         // br : bottom-right
                         if (faceRect.width > FACE_THRESHOLD && faceRect.height > FACE_THRESHOLD) {
@@ -173,45 +187,6 @@ public class FaceCameraManage extends JavaCameraView implements SettingsCamera {
                         }
                     }
 
-//                    if (tracker != null && tracker.update(gray, trackerPoints)) {
-//                        OPENCV_RECOG++;
-//                        Log.e("WPC", "OPENCV_RECOG= " + OPENCV_RECOG);
-//
-//                        Rect2d[] facePoints = trackerPoints.toArray();
-//                        for (int i = 0; i < facePoints.length; i++) {
-//                            Imgproc.rectangle(rgba, facePoints[i].tl(), facePoints[i].br(), new Scalar(255, 255, 255), 1);
-//                            Log.e("WPC", "facePoints[i].width= " + facePoints[i].width + ", facePoints[i].height= " + facePoints[i].height);
-//                            Log.e("WPC", "facePoints[i].y= " + facePoints[i].y + ", facePoints[i].x= " + facePoints[i].x);
-//                            Log.e("WPC", "rgba.cols()= " + rgba.cols() + ", rgba.rows()= " + rgba.rows());
-//                            if (facePoints[i].y > 0 &&
-//                                    facePoints[i].x > 0 &&
-//                                    facePoints[i].width > 60 &&
-//                                    facePoints[i].height > 60 &&
-//                                    (facePoints[i].x + (int)facePoints[i].width)< rgba.cols() &&
-//                                    (facePoints[i].y + (int)facePoints[i].height)< rgba.rows()) {
-//                                final Bitmap bitmap = Bitmap.createBitmap(rgba.cols(), rgba.rows(), Bitmap.Config.RGB_565);
-//                                Utils.matToBitmap(rgba, bitmap);
-//                                Bitmap faceImageBitmap = Bitmap.createBitmap(bitmap,
-//                                        (int)facePoints[i].x,
-//                                        (int)facePoints[i].y,
-//                                        (int)facePoints[i].width,
-//                                        (int)facePoints[i].height);
-//
-//                                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-//                                faceImageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-//                                byte[] byteArray = byteArrayOutputStream .toByteArray();
-//
-//                                String encoded = Base64.encodeToString(byteArray, Base64.NO_WRAP);
-//                                if (OPENCV_RECOG > 20) {
-//                                    writeToFile(encoded);
-//                                    faceCapturedCallback.onFaceBack(encoded);
-//                                    OPENCV_RECOG = 0;
-//                                }
-//                            }
-//                        }
-//                    } else {
-//                        myTimer.scheduleAtFixedRate(new trackFace(), 1000, 5 * 1000);
-//                    }
                 }
 
                 return rgba;
